@@ -183,30 +183,30 @@ mixin的强大之处，在于可以指定参数和缺省值。
 ### 9. 循环
 * @for循环
 
-@for $i from 1 to 10 {
-　　.border-#{$i} {
-　　    border: #{$i}px solid blue;
-　　}
-}
+        @for $i from 1 to 10 {
+        　　.border-#{$i} {
+        　　    border: #{$i}px solid blue;
+        　　}
+        }
 * @while循环
 
-$i: 6;
-@while $i > 0 {
-　　.item-#{$i} { width: 2em * $i; }
-　　$i: $i - 2;
-}
+        $i: 6;
+        @while $i > 0 {
+        　　.item-#{$i} { width: 2em * $i; }
+        　　$i: $i - 2;
+        }
 * @each命令
 
-@each $member in a, b, c, d {
-　　.#{$member} {
-　　　　background-image: url("/image/#{$member}.jpg");
-　　}
-}
+        @each $member in a, b, c, d {
+        　　.#{$member} {
+        　　　　background-image: url("/image/#{$member}.jpg");
+        　　}
+        }
 ### 10. 自定义函数
-　　@function double($n) {
-　　　　@return $n * 2;
-　　}
-　　#sidebar {
-　　　　width: double(5px);
-　　}
+           @function double($n) {
+        　　　　@return $n * 2;
+        　　}
+        　　#sidebar {
+        　　　　width: double(5px);
+        　　}
 
