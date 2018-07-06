@@ -1,16 +1,114 @@
-// 引用
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-//Add variables here:
-h1 {
-  font-family: Roboto, sans-serif;
-  text-align: center;
+@charset "UTF-8";
+$font: 10px;
+
+*, body {
+  padding: 0px;
+  margin: 0px;
 }
-.banner {
-  font-family: 'Pacifico', cursive;
-  height: 400px;
-  background-image: url("lemonade.jpg");
+
+body {
+  font: {
+    size: $font * 1.6;
+  }
 }
-.container {
-  text-align: center;
-  font-family: 'Pacifico', cursive;
+
+//清楚浮动样式，伪类嵌套
+.clearfix {
+  &::before, // & 表示引用上一层的选择器
+  &::after {
+    content: "";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+p {
+  border: {
+    color: red;
+  }
+
+  font: {
+    size: $font * 1.2;
+    weight: 700;
+  }
+}
+
+@for $i from 1 to 10 {//through表示包括end这个数，而to则不包括end这个数
+  .border-#{$i} {
+    border: #{$i}px solid red;
+  }
+}
+
+
+@for $i from 1 through 3 {
+  .item-#{$i} {
+    width: 2em * $i;
+
+  }
+
+}
+
+@each $animal in puma, sea-slug, egret, salamander {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+    &:hover {
+      background-image: url('/images/#{$animal}-1.png');
+    }
+
+    &:hover::after {
+      color: red;
+    }
+  }
+}
+/*
+icon现在大家一般都用sprite去做，所以这种单独的很少了，
+不过可以同样用这个来设置background-position，
+假设这个sprite图片是宽30px，高120px，每个icon大小为30px*30px
+*/
+$sprite: puma sea-slug egret salamander !default;
+%sprite-animal{
+  background: url('/images/animal.png') no-repeat;
+}
+@each $animal in $sprite {
+  .#{$animal}-icon {
+    @extend %sprite-animal;
+    background-position:0 -(index($sprite,$animal)*30px);
+
+  }
+
+}
+
+/*
+按钮的样式一般都要分颜色，大小吧，甚至按钮组。每个颜色一个class，每个大小还一个class
+*/
+//$btnColorClass: (primary #0078E7 #fff) (green $green #fff);
+$btnColorClass: (primary #0078E7 #fff) (blue #00A3CF #fff) (orange #F47837 #fff) !default;
+
+@mixin btn-color($bgColor:#e6e6e6, $textColor:#333){
+
+  color:$textColor;
+  background-color: $bgColor;
+  border:1px solid darken($bgColor, 5%);
+  border-color:lighten($bgColor, 2%) darken($bgColor, 5%) darken($bgColor, 5%) lighten($bgColor, 2%);
+
+  &:hover{
+    background-color: darken($bgColor, 5%);
+    color:$textColor;
+  }
+
+}
+
+@each $colorClass in $btnColorClass{
+  $class: nth($colorClass,1);
+  $bgColor: nth($colorClass,2);
+  $textColor: nth($colorClass,3);
+
+  .btn-#{$class}{
+    @include btn-color($bgColor,$textColor);
+
+  }
 }

@@ -1,0 +1,135 @@
+@charset "UTF-8";
+*, body {
+  padding: 0px;
+  margin: 0px; }
+
+body {
+  font-size: 16px; }
+
+.clearfix::before, .clearfix::after {
+  content: "";
+  display: table; }
+.clearfix::after {
+  clear: both;
+  overflow: hidden; }
+
+p {
+  border-color: red;
+  font-size: 12px;
+  font-weight: 700; }
+
+.border-1 {
+  border: 1px solid red; }
+
+.border-2 {
+  border: 2px solid red; }
+
+.border-3 {
+  border: 3px solid red; }
+
+.border-4 {
+  border: 4px solid red; }
+
+.border-5 {
+  border: 5px solid red; }
+
+.border-6 {
+  border: 6px solid red; }
+
+.border-7 {
+  border: 7px solid red; }
+
+.border-8 {
+  border: 8px solid red; }
+
+.border-9 {
+  border: 9px solid red; }
+
+.item-1 {
+  width: 2em; }
+
+.item-2 {
+  width: 4em; }
+
+.item-3 {
+  width: 6em; }
+
+.puma-icon {
+  background-image: url("/images/puma.png"); }
+  .puma-icon:hover {
+    background-image: url("/images/puma-1.png"); }
+  .puma-icon:hover::after {
+    color: red; }
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png"); }
+  .sea-slug-icon:hover {
+    background-image: url("/images/sea-slug-1.png"); }
+  .sea-slug-icon:hover::after {
+    color: red; }
+
+.egret-icon {
+  background-image: url("/images/egret.png"); }
+  .egret-icon:hover {
+    background-image: url("/images/egret-1.png"); }
+  .egret-icon:hover::after {
+    color: red; }
+
+.salamander-icon {
+  background-image: url("/images/salamander.png"); }
+  .salamander-icon:hover {
+    background-image: url("/images/salamander-1.png"); }
+  .salamander-icon:hover::after {
+    color: red; }
+
+/*
+icon现在大家一般都用sprite去做，所以这种单独的很少了，
+不过可以同样用这个来设置background-position，
+假设这个sprite图片是宽30px，高120px，每个icon大小为30px*30px
+*/
+.puma-icon, .sea-slug-icon, .egret-icon, .salamander-icon {
+  background: url("/images/animal.png") no-repeat; }
+
+.puma-icon {
+  background-position: -30px; }
+
+.sea-slug-icon {
+  background-position: -60px; }
+
+.egret-icon {
+  background-position: -90px; }
+
+.salamander-icon {
+  background-position: -120px; }
+
+/*
+按钮的样式一般都要分颜色，大小吧，甚至按钮组。每个颜色一个class，每个大小还一个class
+*/
+.btn-primary {
+  color: #fff;
+  background-color: #0078E7;
+  border: 1px solid #006bce;
+  border-color: #007df1 #006bce #006bce #007df1; }
+  .btn-primary:hover {
+    background-color: #006bce;
+    color: #fff; }
+
+.btn-blue {
+  color: #fff;
+  background-color: #00A3CF;
+  border: 1px solid #008fb6;
+  border-color: #00abd9 #008fb6 #008fb6 #00abd9; }
+  .btn-blue:hover {
+    background-color: #008fb6;
+    color: #fff; }
+
+.btn-orange {
+  color: #fff;
+  background-color: #F47837;
+  border: 1px solid #f3681f;
+  border-color: #f57f41 #f3681f #f3681f #f57f41; }
+  .btn-orange:hover {
+    background-color: #f3681f;
+    color: #fff; }
+
+/*# sourceMappingURL=demo.css.map */
