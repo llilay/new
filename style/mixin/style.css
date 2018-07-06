@@ -1,0 +1,62 @@
+#header {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.gallery {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.inline-block {
+  display: inline-block; }
+
+.fl {
+  float: left;
+  display: inline; }
+
+.fr {
+  float: right;
+  display: inline; }
+
+.disabled {
+  background-color: #e6e6e6 !important;
+  color: #ababab !important;
+  cursor: not-allowed !important; }
+
+#header {
+  width: 1000px;
+  height: 200px; }
+  #header .logo {
+    width: 200px; }
+
+@media screen and (min-width: 780px) and (max-width: 1000px) {
+  #header {
+    color: red; } }
+
+@media screen and (min-width: 780px) and (max-width: 1000px) {
+  body {
+    font-size: 14px; } }
+@keyframes show {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+.no-border-radius .box {
+  background: url("round-bg.gif") no-repeat; }
+
+.box .no-border-radius {
+  background: url("round-bg.gif") no-repeat; }
+
+.box {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2); }
+
+/*# sourceMappingURL=style.css.map */

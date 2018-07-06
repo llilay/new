@@ -1,0 +1,79 @@
+@charset "UTF-8";
+$lte7: false;
+@import 'mixin';
+
+#header{
+  width:1000px;
+  @include center-block;
+}
+
+.gallery{
+  width:600px;
+  @include center-block;
+}
+
+//无参数//------------------------------------------------------
+.inline-block{
+  @include inline-block;
+}
+
+//有参数//--------------------------------------------------------
+$lte7: true;
+.fl{
+  @include float;
+}
+
+.fr{
+  @include float(right);
+}
+
+.disabled{
+  @include disabled;
+}
+
+@include header{
+  width:1000px;
+  height:200px;
+  .logo{
+    width:200px;
+  }
+}
+
+#header{
+  @include screen(780px,1000px){
+    color:red;
+  }
+}
+
+////定义media-queries的最小最大宽度
+@include screen(780px,1000px){
+  body{
+    font-size:14px;
+  }
+}
+
+////定义animation的keyframes
+@include keyframes(show){
+  0% { opacity:0; }
+  100% { opacity:1; }
+}
+
+//注意下面这两个的区别
+////定义所有不支持圆角的浏览器使用背景图片 //得使用[modernizr](http://modernizr.com/)来检测，在html上加class
+@include no-border-radius{
+  .box{
+    background:url('round-bg.gif') no-repeat;
+  }
+}
+
+.box{
+  @include no-border-radius{
+    background:url('round-bg.gif') no-repeat;
+  }
+}
+
+.box{
+  @include box-shadow(0 0 5px rgba(0,0,0,.3));
+  @include box-sizing;
+  @include transform(scale(2));
+}

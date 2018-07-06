@@ -1,0 +1,113 @@
+@mixin center-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+$lte7: true !default;
+@mixin inline-block {
+  display: inline-block;
+
+  @if $lte7 {
+    *display: inline;
+    *zoom: 1;
+  }
+}
+
+@mixin float($float: left) {
+  float: $float;
+  @if $lte7 {
+    display: inline;
+  }
+}
+
+@mixin disabled($bgColor:#e6e6e6,$textColor:#ababab){
+  background-color: $bgColor !important;
+  color: $textColor !important;
+  cursor: not-allowed !important;
+}
+
+@mixin header{
+  #header{
+    @content;
+  }
+}
+
+
+@mixin screen($res-min, $res-max){
+  @media screen and ( min-width: $res-min ) and ( max-width: $res-max ){
+    @content;
+  }
+}
+
+@mixin keyframes($name){
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin no-border-radius{
+  .no-border-radius{
+    @content
+  }
+}
+
+@mixin triangle($direction, $size, $borderColor ) {
+  content:"";
+  height: 0;
+  width: 0;
+  @if $direction == top {
+    border-bottom:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  }
+  @else if $direction == right {
+    border-left:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+  @else if $direction == bottom {
+    border-top:$size solid $borderColor;
+    border-left:$size dashed transparent;
+    border-right:$size dashed transparent;
+  }
+  @else if $direction == left {
+    border-right:$size solid $borderColor;
+    border-top:$size dashed transparent;
+    border-bottom:$size dashed transparent;
+  }
+}
+
+//----------------------------------------------------------------------------
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default;
+
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      -webkit-#{$property}: $value;
+    } @else if $prefix == moz and $prefix-for-mozilla == true {
+      -moz-#{$property}: $value;
+    } @else if $prefix == ms and $prefix-for-microsoft == true {
+      -ms-#{$property}: $value;
+    } @else if $prefix == o and $prefix-for-opera == true {
+      -o-#{$property}: $value;
+    } @else if $prefix == spec and $prefix-for-spec == true {
+      #{$property}: $value;
+    } @else {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin box-shadow($shadow...) {
+  @include prefixer(box-shadow, $shadow, webkit spec);
+}
+@mixin box-sizing($type: border-box) {
+  @include prefixer(box-sizing, $type, webkit moz spec);
+}
+@mixin transform($property...) {
+  @include prefixer(transform, $property, webkit moz o spec);
+}
