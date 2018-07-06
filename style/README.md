@@ -123,51 +123,51 @@ SASS共有两种注释风格。
 ### 5. 继承 @extend
 SASS允许一个选择器，继承另一个选择器，使用@extend命令。比如，现有class1：
 
-.class1 {
-    border: 1px solid #ddd;
-}
+        .class1 {
+            border: 1px solid #ddd;
+        }
 
-.class2 {
-　　@extend .class1;
-　　font-size:120%;
-　　}
+        .class2 {
+        　　@extend .class1;
+        　　font-size:120%;
+        }
 注意：要继承的不仅仅是类选择器，可以是id选择器也可以是标签选择器，也可以是某个状态，任何选择器都能继承。
 
 此外，可以用占位符%构建只用来继承的选择器。
 用占位符%声明的代码，如果不被@extend调用就不会被编译，也不会渲染到CSS的规则集中。
 
-%br5 {
-    border-radius: 5px;
-}
+        %br5 {
+            border-radius: 5px;
+        }
 // 使用@extend调用：
-.btn {
-    @extend %bt5;
-}
+        .btn {
+            @extend %bt5;
+        }
 
 // 编译后
-.btn {
-    border-radius: 5px;
-}
+        .btn {
+            border-radius: 5px;
+        }
 ### 6. Mixin混合宏
 Mixin有点像C语言的宏（macro），是可以重用的代码块。
 
 首先，使用@mixin命令，定义一个代码块。
 
-@mixin left {
-　　float: left;
-　　margin-left: 10px;
-}
+        @mixin left {
+        　　float: left;
+        　　margin-left: 10px;
+        }
 其次，使用@include调用
 
-div {
-　　@include left;
-}
+        div {
+        　　@include left;
+        }
 mixin的强大之处，在于可以指定参数和缺省值。
 
-@mixin left($value: 10px) {
-　　float: left;
-　　margin-right: $value;
-　　}
+        @mixin left($value: 10px) {
+        　　float: left;
+        　　margin-right: $value;
+        }
 ### 7. 插入/引入外部文件
 @import命令，用来插入外部文件。
 
