@@ -1,4 +1,49 @@
 @charset "UTF-8";
+/*
+现在问题来了，如果我们对默认的padding为2px不满意，要改为5px，我们有如下方法：
+方法一：重新覆写
+  //导入_imgstyle.scss
+  @import 'imgstyle';
+  .img-border{
+    padding:5px;
+  }
+
+方法二：改变@include的参数
+  //导入_imgstyle.scss
+  @import 'imgstyle';
+  .img-border{
+    @include img-border($imgStyleBorder,5px);
+  }
+
+方法三：现在请上面那些山寨土鳖方法闪一边去，该我们的!default出场了
+
+*/
+.img-border {
+  border: 1px solid #ccc;
+  padding: 5px; }
+
+.img-rounded {
+  border-radius: 8px; }
+
+/*
+为css3而设计的。
+css3在给css带来翻天覆地的变化之外，也给sass的@mixin传递参数带来纠结了。
+一般来说我们的@mixin传递的参数是以,来分隔的，但是css3的一些属性可以设置多个值，
+并且多个值以,分开，
+如box-shadow:0 0 3px rgba(0,0,0,0.3),inset 0 0 3px rgba(255,255,255,0.3);
+这让@mixin如何给box-shadow传递参数啊。
+所以这种变量后面加...的变量就出现了。
+
+变量加...的方式只出现在传递参数中
+*/
+.btn {
+  border-top: 1px solid #ccc; }
+
+a {
+  color: red; }
+  a:hover {
+    color: blue; }
+
 *, body {
   padding: 0px;
   margin: 0px; }
@@ -53,6 +98,47 @@ p {
 
 .item-3 {
   width: 6em; }
+
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.span1 {
+  width: 60px; }
+
+.span2 {
+  width: 140px; }
+
+.span3 {
+  width: 220px; }
+
+.span4 {
+  width: 300px; }
+
+.span5 {
+  width: 380px; }
+
+.span6 {
+  width: 460px; }
+
+.span7 {
+  width: 540px; }
+
+.span8 {
+  width: 620px; }
+
+.span9 {
+  width: 700px; }
+
+.span10 {
+  width: 780px; }
+
+.span11 {
+  width: 860px; }
+
+.span12 {
+  width: 940px; }
 
 .puma-icon {
   background-image: url("/images/puma.png"); }
@@ -131,5 +217,25 @@ icon现在大家一般都用sprite去做，所以这种单独的很少了，
   .btn-orange:hover {
     background-color: #f3681f;
     color: #fff; }
+
+/*
+在有全局变量的情况下，sass是没有局部变量的。
+*/
+p {
+  color: blue; }
+
+/*a{
+  color:$color;//$color未定义
+}*/
+p {
+  color: blue; }
+  p a {
+    color: blue; }
+
+p {
+  color: blue; }
+
+p {
+  color: red; }
 
 /*# sourceMappingURL=demo.css.map */

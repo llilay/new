@@ -1,4 +1,66 @@
 @charset "UTF-8";
+/*
+现在问题来了，如果我们对默认的padding为2px不满意，要改为5px，我们有如下方法：
+方法一：重新覆写
+  //导入_imgstyle.scss
+  @import 'imgstyle';
+  .img-border{
+    padding:5px;
+  }
+
+方法二：改变@include的参数
+  //导入_imgstyle.scss
+  @import 'imgstyle';
+  .img-border{
+    @include img-border($imgStyleBorder,5px);
+  }
+
+方法三：现在请上面那些山寨土鳖方法闪一边去，该我们的!default出场了
+
+*/
+
+$imgStylePadding: 5px;//申明$imgStylePadding为5px
+@import 'imgstyle';//导入_imgstyle.scss
+
+//无须去源文件中修改，且解析出来无重复代码，完美！//----------------------------
+
+//变量后面加...//-------------------------------------------------------
+/*
+为css3而设计的。
+css3在给css带来翻天覆地的变化之外，也给sass的@mixin传递参数带来纠结了。
+一般来说我们的@mixin传递的参数是以,来分隔的，但是css3的一些属性可以设置多个值，
+并且多个值以,分开，
+如box-shadow:0 0 3px rgba(0,0,0,0.3),inset 0 0 3px rgba(255,255,255,0.3);
+这让@mixin如何给box-shadow传递参数啊。
+所以这种变量后面加...的变量就出现了。
+
+变量加...的方式只出现在传递参数中
+*/
+@mixin box-shadow($shadow...){
+  -webkit-box-shadow:$shadow;
+  -moz-box-shadow:$shadow;
+  box-shadow:$shadow;
+}
+
+//变量用#{}包裹//-------------------------------------------------------
+//一般来说，我们设置的变量都是用于属性值的，而如果用在属性或者选择器上，就得以#{}包裹起来了。
+$btnClass: btn !default;
+$borderDirection: top !default;
+.#{$btnClass}{
+  border-#{$borderDirection} : 1px solid #ccc;
+}
+//多个变量一起申明//-------------------------------------------------
+$linkColor: red blue !default;
+a{
+  color:nth($linkColor, 1);
+  &:hover{
+    color:nth($linkColor, 2);
+  }
+}
+
+
+
+
 $font: 10px;
 
 *, body {
@@ -36,6 +98,29 @@ p {
     weight: 700;
   }
 }
+
+$lte7:true !default;//是否兼容ie6,7 //inline-block //ie6-7 *display: inline;*zoom:1;
+@mixin inline-block {
+  display: inline-block;
+  @if $lte7 {
+    *display: inline;*zoom:1;
+  }
+}
+
+$filter:false !default; //是否开启ie滤镜 //背景色半透明
+@mixin bgcolor-alpha($bgcolor: rgba(0,0,0,.5)){
+  color:#fff;
+  @if $filter{
+    filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#{ie-hex-str($bgcolor)}', endColorstr='#{ie-hex-str($bgcolor)}');
+
+  }
+  @else{
+    background-color: #333;
+  }
+  background-color:$bgcolor;
+
+}
+
 //-----------------------------------------------------
 @for $i from 1 to 10 {//through表示包括end这个数，而to则不包括end这个数
   .border-#{$i} {
@@ -51,6 +136,28 @@ p {
   }
 
 }
+
+// class span1-$gridColumns // span的class循环输出，通过变量$gridSpanSwitch来控制是否输出 //-----------------------------------------------------
+$gridColumns: 12 !default;
+$gridcolumnWidth: 60px !default;
+$gridGutter: 20px !default;
+
+%span-base{
+  float:left;
+  margin-left:$gridGutter / 2;
+  margin-right:$gridGutter / 2;
+
+}
+
+@for $i from 1 through $gridColumns {
+  .span#{$i} {
+    @extend %span-base;
+    width:($gridcolumnWidth + $gridGutter) * $i - $gridGutter;
+
+  }
+
+}
+
 //-------------------------------------------------------
 @each $animal in puma, sea-slug, egret, salamander {
   .#{$animal}-icon {
@@ -88,7 +195,7 @@ $sprite: puma sea-slug egret salamander !default;
 /*
 按钮的样式一般都要分颜色，大小吧，甚至按钮组。每个颜色一个class，每个大小还一个class
 */
-$btnColorClass: (primary #0078E7 #fff) (blue #00A3CF #fff) (orange #F47837 #fff) !default;
+$btnColorClass: (primary #0078E7 #fff) ('blue' #00A3CF #fff) ('orange' #F47837 #fff) !default;
 
 @mixin btn-color($bgColor:#e6e6e6, $textColor:#333){
 
@@ -109,9 +216,44 @@ $btnColorClass: (primary #0078E7 #fff) (blue #00A3CF #fff) (orange #F47837 #fff)
   $bgColor: nth($colorClass,2);
   $textColor: nth($colorClass,3);
 
-  .btn-#{$class}{
+  .btn-#{$class} {
     @include btn-color($bgColor,$textColor);
 
   }
 }
 //-----------------------------------------------------------------
+
+/*
+在有全局变量的情况下，sass是没有局部变量的。
+*/
+p{
+  $color:blue;
+  color:$color;//blue
+}
+
+/*a{
+  color:$color;//$color未定义
+}*/
+
+p{
+  $color:blue;
+  color:$color;//blue
+  a{
+    color:$color;//blue
+  }
+}
+
+//第一种，使用默认值
+//变量申明带有!default，但是之前没有这个变量的申明
+$color:blue !default;
+p{
+  color:$color;//blue
+}
+
+//第二种，使用前面定义的值
+$color:red;
+//变量申明带有!default，但是前面还有这个变量的申明
+$color:blue !default;
+p{
+  color:$color;//red
+}
