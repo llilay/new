@@ -10,11 +10,11 @@
 ## 3. sass编译
 
 ### 3.1 单文件编译
-sass <编译的sass文件路径>/xx.scss: <输入的css路径>/xx.css\<br>
-sass input.scss:output.css
+        sass <编译的sass文件路径>/xx.scss: <输入的css路径>/xx.css\<br>
+        sass input.scss:output.css
 
 ### 3.2 多文件编译
-sass src/sass/:dist/css/ \<br>
+* sass src/sass/:dist/css/
 上面的命令表示将项目中“sass”文件夹中所有“.scss”(“.sass”)文件编译成“.css”文件，并且将这些 CSS 文件都放在项目中“css”文件夹中。
 
 #### 3.3 SASS提供四个编译风格的选项：
