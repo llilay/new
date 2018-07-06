@@ -4,8 +4,8 @@
         文件扩展名不同：“.sass”和“.scss”;
         SASS是以严格缩进式语法规则来书写的，不带大括号和分号；而SCSS的语法和CSS书写语法类似。
 ## 2. 安装
-先安装Ruby(http://rubyinstaller.org/down...\<br>
-通过命令安装sass: 打开命令终端，输入：gem install sass
+        先安装Ruby(http://www.ruby-lang.org/zh_cn/downloads/)
+        通过命令安装sass: 打开命令终端，输入：gem install sass
 
 ## 3. sass编译
 
@@ -14,7 +14,7 @@
         sass input.scss:output.css
 
 ### 3.2 多文件编译
-* sass src/sass/:dist/css/
+        sass src/sass/:dist/css/
 上面的命令表示将项目中“sass”文件夹中所有“.scss”(“.sass”)文件编译成“.css”文件，并且将这些 CSS 文件都放在项目中“css”文件夹中。
 
 #### 3.3 SASS提供四个编译风格的选项：
@@ -29,9 +29,9 @@
 * sass --style compressed test.sass test.css
 ### 3.4 watch监控sass文件或目录
   // watch a file
-　sass --watch input.scss:output.css
+        sass --watch input.scss:output.css
 　// watch a directory
-　sass --watch app/sass:public/css
+        sass --watch app/sass:public/css
 官方在线工具 https://www.sassmeister.com/
 
 ## 用法
