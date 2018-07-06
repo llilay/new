@@ -1,36 +1,40 @@
 # scss
-1. SASS和SCSS的区别
+
+## 1. SASS和SCSS的区别
 文件扩展名不同：“.sass”和“.scss”；
 SASS是以严格缩进式语法规则来书写的，不带大括号和分号；而SCSS的语法和CSS书写语法类似。
-2. 安装
+## 2. 安装
 先安装Ruby(http://rubyinstaller.org/down...
 通过命令安装sass: 打开命令终端，输入：gem install sass
-3. sass编译
-3.1 单文件编译
+
+## 3. sass编译
+
+### 3.1 单文件编译
 sass <编译的sass文件路径>/xx.scss: <输入的css路径>/xx.css
 sass input.scss:output.css
-3.2 多文件编译
+
+### 3.2 多文件编译
 sass src/sass/:dist/css/
 上面的命令表示将项目中“sass”文件夹中所有“.scss”(“.sass”)文件编译成“.css”文件，并且将这些 CSS 文件都放在项目中“css”文件夹中。
 
-3.3 SASS提供四个编译风格的选项：
-nested：嵌套缩进的css代码，它是默认值。
-expanded：没有缩进的、扩展的css代码。
-compact：简洁格式的css代码。
-compressed：压缩后的css代码。
+#### 3.3 SASS提供四个编译风格的选项：
+* nested：嵌套缩进的css代码，它是默认值。
+* expanded：没有缩进的、扩展的css代码。
+* compact：简洁格式的css代码。
+* compressed：压缩后的css代码。
 在编译的时候带上参数' --style expanded':
 
 在生产环境中，一般使用最后一个
 
-sass --style compressed test.sass test.css
-3.4 watch监控sass文件或目录
+* sass --style compressed test.sass test.css
+### 3.4 watch监控sass文件或目录
   // watch a file
 　sass --watch input.scss:output.css
 　// watch a directory
 　sass --watch app/sass:public/css
 官方在线工具 https://www.sassmeister.com/
 
-用法
+## 用法
 1. 变量
 sass允许使用变量，所有变量以$开头。
 
