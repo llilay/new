@@ -1,20 +1,20 @@
 # scss
 
 ## 1. SASS和SCSS的区别
-文件扩展名不同：“.sass”和“.scss”；
+文件扩展名不同：“.sass”和“.scss”；\<br>
 SASS是以严格缩进式语法规则来书写的，不带大括号和分号；而SCSS的语法和CSS书写语法类似。
 ## 2. 安装
-先安装Ruby(http://rubyinstaller.org/down...
+先安装Ruby(http://rubyinstaller.org/down...\<br>
 通过命令安装sass: 打开命令终端，输入：gem install sass
 
 ## 3. sass编译
 
 ### 3.1 单文件编译
-sass <编译的sass文件路径>/xx.scss: <输入的css路径>/xx.css
+sass <编译的sass文件路径>/xx.scss: <输入的css路径>/xx.css \<br>
 sass input.scss:output.css
 
 ### 3.2 多文件编译
-sass src/sass/:dist/css/
+sass src/sass/:dist/css/ \<br>
 上面的命令表示将项目中“sass”文件夹中所有“.scss”(“.sass”)文件编译成“.css”文件，并且将这些 CSS 文件都放在项目中“css”文件夹中。
 
 #### 3.3 SASS提供四个编译风格的选项：
