@@ -1,8 +1,8 @@
 # scss
 
 ## 1. SASS和SCSS的区别
-文件扩展名不同：“.sass”和“.scss”;\<br>
-SASS是以严格缩进式语法规则来书写的，不带大括号和分号；而SCSS的语法和CSS书写语法类似。
+        文件扩展名不同：“.sass”和“.scss”;
+        SASS是以严格缩进式语法规则来书写的，不带大括号和分号；而SCSS的语法和CSS书写语法类似。
 ## 2. 安装
 先安装Ruby(http://rubyinstaller.org/down...\<br>
 通过命令安装sass: 打开命令终端，输入：gem install sass
