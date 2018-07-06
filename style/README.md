@@ -175,11 +175,11 @@ mixin的强大之处，在于可以指定参数和缺省值。
 ### 8. 条件语句
 * @if语句
 
-@if lightness($color) > 30% {
-　　　　background-color: #000;
-　　} @else {
-　　　　background-color: #fff;
-　　}
+        @if lightness($color) > 30% {
+        　　background-color: #000;
+        } @else {
+        　　background-color: #fff;
+        }
 ### 9. 循环
 * @for循环
 
