@@ -36,7 +36,7 @@ p {
     weight: 700;
   }
 }
-
+//-----------------------------------------------------
 @for $i from 1 to 10 {//through表示包括end这个数，而to则不包括end这个数
   .border-#{$i} {
     border: #{$i}px solid red;
@@ -51,7 +51,7 @@ p {
   }
 
 }
-
+//-------------------------------------------------------
 @each $animal in puma, sea-slug, egret, salamander {
   .#{$animal}-icon {
     background-image: url('/images/#{$animal}.png');
