@@ -35,7 +35,7 @@
 官方在线工具 https://www.sassmeister.com/
 
 ## 用法
-1. 变量
+### 1. 变量
 sass允许使用变量，所有变量以$开头。
 
 普通变量声明后在全局范围内可使用
@@ -48,7 +48,7 @@ $side: left;
 .rouned {
     border-#{$side}-radius: 3px;
 }
-2. 加减乘除
+### 2. 加减乘除
 sass允许在代码中使用算式：
 
 body {
@@ -68,8 +68,8 @@ p {
   height: (500px/2); // 使用了圆括号，是除法运算
   margin-left: 5px + 8px/2px; // 使用了加（+）号，是除法运算
 }
-3. 嵌套
-3.1 选择器嵌套
+### 3. 嵌套
+* 3.1 选择器嵌套
 div h1 {
     color: red;
 }
@@ -89,7 +89,7 @@ a {
         color: red;
     }
 }
-3.2 属性嵌套
+* 3.2 属性嵌套
 如border-color、font系列等
 
 p {
@@ -104,7 +104,7 @@ p {
 }
 注意，border必须加上冒号：
 
-4. 注释
+### 4. 注释
 SASS共有两种注释风格。
 
 标准的CSS注释:
@@ -120,7 +120,7 @@ SASS共有两种注释风格。
 /*!
     重要声明
 */
-5. 继承 @extend
+### 5. 继承 @extend
 SASS允许一个选择器，继承另一个选择器，使用@extend命令。比如，现有class1：
 
 .class1 {
@@ -148,7 +148,7 @@ SASS允许一个选择器，继承另一个选择器，使用@extend命令。比
 .btn {
     border-radius: 5px;
 }
-6. Mixin混合宏
+### 6. Mixin混合宏
 Mixin有点像C语言的宏（macro），是可以重用的代码块。
 
 首先，使用@mixin命令，定义一个代码块。
@@ -168,41 +168,41 @@ mixin的强大之处，在于可以指定参数和缺省值。
 　　float: left;
 　　margin-right: $value;
 　　}
-7. 插入/引入外部文件
+### 7. 插入/引入外部文件
 @import命令，用来插入外部文件。
 
 @import "path/filename.scss";
-8. 条件语句
-@if语句
+### 8. 条件语句
+* @if语句
 
 @if lightness($color) > 30% {
 　　　　background-color: #000;
 　　} @else {
 　　　　background-color: #fff;
 　　}
-9. 循环
-@for循环
+### 9. 循环
+* @for循环
 
 @for $i from 1 to 10 {
 　　.border-#{$i} {
 　　    border: #{$i}px solid blue;
 　　}
 }
-@while循环
+* @while循环
 
 $i: 6;
 @while $i > 0 {
 　　.item-#{$i} { width: 2em * $i; }
 　　$i: $i - 2;
 }
-@each命令
+* @each命令
 
 @each $member in a, b, c, d {
 　　.#{$member} {
 　　　　background-image: url("/image/#{$member}.jpg");
 　　}
 }
-10. 自定义函数
+### 10. 自定义函数
 　　@function double($n) {
 　　　　@return $n * 2;
 　　}
