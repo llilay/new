@@ -64,6 +64,8 @@ p {
     }
   }
 }
+
+//---------------------------------------------------------------
 /*
 icon现在大家一般都用sprite去做，所以这种单独的很少了，
 不过可以同样用这个来设置background-position，
@@ -82,10 +84,10 @@ $sprite: puma sea-slug egret salamander !default;
 
 }
 
+//------------------------------------------------------------
 /*
 按钮的样式一般都要分颜色，大小吧，甚至按钮组。每个颜色一个class，每个大小还一个class
 */
-//$btnColorClass: (primary #0078E7 #fff) (green $green #fff);
 $btnColorClass: (primary #0078E7 #fff) (blue #00A3CF #fff) (orange #F47837 #fff) !default;
 
 @mixin btn-color($bgColor:#e6e6e6, $textColor:#333){
@@ -112,3 +114,4 @@ $btnColorClass: (primary #0078E7 #fff) (blue #00A3CF #fff) (orange #F47837 #fff)
 
   }
 }
+//-----------------------------------------------------------------
