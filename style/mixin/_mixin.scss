@@ -111,3 +111,23 @@ $prefix-for-spec: true !default;
 @mixin transform($property...) {
   @include prefixer(transform, $property, webkit moz o spec);
 }
+
+%center-block {
+  @include center-block;
+}
+
+$lte7:true;
+
+%clearfix {
+  @if $lte7 {
+    *zoom: 1;
+  }
+  &:before, &:after {
+    content: "";
+    display: table;
+    font: 0/0 a;
+  }
+  &:after {
+    clear: both;
+  }
+}

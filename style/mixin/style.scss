@@ -77,3 +77,21 @@ $lte7: true;
   @include box-sizing;
   @include transform(scale(2));
 }
+
+//%//----------------------------------------------------------------------------------------
+#header{
+  width:1000px;
+  @extend %center-block;
+}
+
+.gallery{
+  width:600px;
+  @extend %center-block;
+}
+
+.wrap{
+  @extend %clearfix;
+}
+.row{
+  @extend %clearfix;
+}

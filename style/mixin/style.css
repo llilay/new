@@ -1,3 +1,16 @@
+#header, .gallery {
+  margin-left: auto;
+  margin-right: auto; }
+
+.wrap, .row {
+  *zoom: 1; }
+  .wrap:before, .row:before, .wrap:after, .row:after {
+    content: "";
+    display: table;
+    font: 0/0 a; }
+  .wrap:after, .row:after {
+    clear: both; }
+
 #header {
   width: 1000px;
   margin-left: auto;
@@ -9,7 +22,9 @@
   margin-right: auto; }
 
 .inline-block {
-  display: inline-block; }
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
 
 .fl {
   float: left;
@@ -58,5 +73,11 @@
   -moz-transform: scale(2);
   -o-transform: scale(2);
   transform: scale(2); }
+
+#header {
+  width: 1000px; }
+
+.gallery {
+  width: 600px; }
 
 /*# sourceMappingURL=style.css.map */
