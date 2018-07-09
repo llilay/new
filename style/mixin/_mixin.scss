@@ -56,24 +56,24 @@ $lte7: true !default;
   height: 0;
   width: 0;
   @if $direction == top {
-    border-bottom:$size solid $borderColor;
-    border-left:$size dashed transparent;
-    border-right:$size dashed transparent;
+    border-bottom: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
   }
   @else if $direction == right {
-    border-left:$size solid $borderColor;
-    border-top:$size dashed transparent;
-    border-bottom:$size dashed transparent;
+    border-left: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
   }
   @else if $direction == bottom {
-    border-top:$size solid $borderColor;
-    border-left:$size dashed transparent;
-    border-right:$size dashed transparent;
+    border-top: $size solid $borderColor;
+    border-left: $size dashed transparent;
+    border-right: $size dashed transparent;
   }
   @else if $direction == left {
-    border-right:$size solid $borderColor;
-    border-top:$size dashed transparent;
-    border-bottom:$size dashed transparent;
+    border-right: $size solid $borderColor;
+    border-top: $size dashed transparent;
+    border-bottom: $size dashed transparent;
   }
 }
 
