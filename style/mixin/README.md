@@ -182,6 +182,7 @@ clearfix大家熟悉吧，以前每次使用都要在我们的html结构上加�
 ## 下面我们来搞点自己定义的函数吧，先来个简单的：
 
 // px转em
+
         @function pxToEm($px, $base: 16) {
             @return ($px / $base) * 1em;
         }
@@ -198,39 +199,40 @@ clearfix大家熟悉吧，以前每次使用都要在我们的html结构上加�
 估计这点小罗罗，是上不了大场面的，@mixin都有一个那么神来之笔，@function怎能没有呢，下面介绍网格布局的一个计算宽度的神来之笔，来自blankwork。
 
 //960网格布局
-$_columns: 12 !default;      // 总列数
-$_column-width: 60px !default;   // 单列宽
-$_gutter: 20px !default;     // 间隔
 
-@function get_width($columns:$_columns, $onlyInnerWidth: true, $_subtract:0){
-  // 默认返回值
-  $return: ($_column-width + $_gutter) * $columns - $_subtract !default;
+        $_columns: 12 !default;      // 总列数
+        $_column-width: 60px !default;   // 单列宽
+        $_gutter: 20px !default;     // 间隔
 
-  @if $onlyInnerWidth == true{
-    //如果$onlyInnerWidth为true，那么减掉一个间隔$_gutter
-    $return: ($_column-width + $_gutter) * $columns - $_gutter - $_subtract;
-  }
+        @function get_width($columns:$_columns, $onlyInnerWidth: true, $_subtract:0){
+            // 默认返回值
+            $return: ($_column-width + $_gutter) * $columns - $_subtract !default;
 
-  @return $return;
-}
+            @if $onlyInnerWidth == true{
+                //如果$onlyInnerWidth为true，那么减掉一个间隔$_gutter
+                $return: ($_column-width + $_gutter) * $columns - $_gutter - $_subtract;
+            }
+
+        @return $return;
+        }
 首先，你得对960的网格系统比较熟悉，不然你可能有点迷惑。如果你不了解960网格系统，建议你先在w3cplus里面找找。当然也许你还没有感受它的神来之笔，别急，先来调用下：
 
-#container{
-    width:get_width(12,false);//960px
-}
-.col-four{
-    @extend %clearfix;
-    .col{
-        @include float;
-        margin:0 $_gutter / 2;
-        width:get_width(3); //220px
-
-        h2{
-            padding-left:10px
-            width:get_width(3,true,10px); //210px
+        #container{
+            width:get_width(12,false);//960px
         }
-    }
-}
+        .col-four{
+            @extend %clearfix;
+            .col{
+                @include float;
+                margin:0 $_gutter / 2;
+                width:get_width(3); //220px
+
+                h2{
+                    padding-left:10px
+                    width:get_width(3,true,10px); //210px
+                }
+            }
+        }
 看到没，向那些.span1,.span2,..., .span12说88，想要几个格子就传递数字几，当然还有些特别需求，要不了刚好的网格，比喻比4个格子要少30px，看到上面的get_width的第三个参数不，专门负责搞定这些额外需求的，get_width(4,true,30px)得到的就是270px。
 
 所以说这个计算宽度有三种调用形式：第一种默认的如get_width(3)得到220px；第二种不需要左右margin的如get_width(3，false)得到240px；第三种可以灵活缩小点宽度如get_width(3,true,10px)得到210px。
