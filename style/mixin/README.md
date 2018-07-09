@@ -103,98 +103,98 @@ clearfix大家熟悉吧，以前每次使用都要在我们的html结构上加�
 
 下面我们介绍几个常用的内置函数，按照官网上面地址上的顺序来。
 
-* rgba
+## rgba
         分为两种：rgba($red, $green, $blue, $alpha)和rgba($color, $alpha)。
 
 第一种跟css3一样，不介绍，第二种对我们有点用，实例：
 
         rgba(#102030, 0.5) => rgba(16, 32, 48, 0.5)
         rgba(blue, 0.2)    => rgba(0, 0, 255, 0.2)
-* ie-hex-str
+## ie-hex-str
         ie-hex-str($color)
 
 这个函数将一个颜色格式化成ie滤镜使用，在做css3使用滤镜兼容的时候用得上，实例：
 
-        ie-hex-str(#abc) => #FFAABBCC
+        `ie-hex-str(#abc) => #FFAABBCC
         ie-hex-str(#3322BB) => #FF3322BB
         ie-hex-str(rgba(0, 255, 0, 0.5)) => #8000FF00
-* darken
+## darken
         darken($color,$amount)
 
 第一个参数是颜色，第二参数是百分数介于0%-100%，表示将某个颜色变暗多少个百分比。
 
-darken(hsl(25, 100%, 80%), 30%) => hsl(25, 100%, 50%)
-darken(#800, 20%) => #200
-* lighten
+        darken(hsl(25, 100%, 80%), 30%) => hsl(25, 100%, 50%)
+        darken(#800, 20%) => #200
+## lighten
         lighten($color,$amount)
 
 第一个参数是颜色，第二参数是百分数介于0%-100%，表示将某个颜色变亮多少个百分比。
 
-lighten(hsl(0, 0%, 0%), 30%) => hsl(0, 0, 30)
-lighten(#800, 20%) => #e00
-* percentage
+        lighten(hsl(0, 0%, 0%), 30%) => hsl(0, 0, 30)
+        lighten(#800, 20%) => #e00
+## percentage
         percentage($value)
 
 将一个没有单位的数字转成百分比形式
 
-percentage(0.2) => 20%
-percentage(100px / 50px) => 200%
-* length
+        percentage(0.2) => 20%
+        percentage(100px / 50px) => 200%
+## length
         length($list)
 
 返回一个列表的长度
 
-length(10px) => 1
-length(#514721 #FFF6BF #FFD324) => 3
-* nth
+        length(10px) => 1
+        length(#514721 #FFF6BF #FFD324) => 3
+## nth
         nth($list, $n);
 
 返回列表里面第n个位置的值
 
-nth(10px 20px 30px, 1) => 10px
-nth((Helvetica, Arial, sans-serif), 3) => sans-serif
-* unit
+        nth(10px 20px 30px, 1) => 10px
+        nth((Helvetica, Arial, sans-serif), 3) => sans-serif
+## unit
         unit($number)
 
 得到这个数的单位
 
-unit(100) => ""
-unit(100px) => "px"
-unit(3em) => "em"
-unit(10px * 5em) => "em*px"
-unit(10px * 5em / 30cm / 1rem) => "em*px/cm*rem"
-* unitless
-    unitless($number)
+        unit(100) => ""
+        unit(100px) => "px"
+        unit(3em) => "em"
+        unit(10px * 5em) => "em*px"
+        unit(10px * 5em / 30cm / 1rem) => "em*px/cm*rem"
+## unitless
+        unitless($number)
 
 返回这个数是否没有单位
 
-unitless(100) => true
-unitless(100px) => false
-* 三目判断
+        unitless(100) => true
+        unitless(100px) => false
+## 三目判断
         if($condition, $if-true, $if-false)
 
 第一个表示条件，第二个表示条件为真的值，第三个表示为假的值
 
-if(true, 1px, 2px) => 1px
-if(false, 1px, 2px) => 2px
+        if(true, 1px, 2px) => 1px
+        if(false, 1px, 2px) => 2px
 可能上面的都提不起你的兴趣，一时记不住也没有关系，大概有个印象，用的时候知道sass可以提供这个函数功能，或者不清楚再去查下它的官方函数。再次提醒刚开始sass的话，注意函数是返回一个值，不能直接放到sass里面直接去运行的，会报错。你可以把这些用在判断或者属性值里面，那么就是一级棒。
 
-下面我们来搞点自己定义的函数吧，先来个简单的：
+## 下面我们来搞点自己定义的函数吧，先来个简单的：
 
 // px转em
-@function pxToEm($px, $base: 16) {
-  @return ($px / $base) * 1em;
-}
+        @function pxToEm($px, $base: 16) {
+            @return ($px / $base) * 1em;
+        }
 调用下：
 
-p{
-    font-size:pxToEm(20);
-}
+        p{
+            font-size:pxToEm(20);
+        }
 解析后的css：
 
-p {
-  font-size: 1.25em;
-}
+        p {
+            font-size: 1.25em;
+        }
 估计这点小罗罗，是上不了大场面的，@mixin都有一个那么神来之笔，@function怎能没有呢，下面介绍网格布局的一个计算宽度的神来之笔，来自blankwork。
 
 //960网格布局
